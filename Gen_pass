@@ -1,0 +1,41 @@
+from random import randint
+
+def generation_passwords(numbers):
+
+    data = ["a", "b", "c", "e", "d", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    password = ""
+    while True:
+
+        for passwords in range(numbers):
+            random = randint(0, 34)
+            go_random = str(data[random])
+            big = randint(0, 100)
+            if big >= 50:
+                cap = go_random.title()
+            else:
+                cap = go_random
+            password += cap
+
+
+        print("\nВаш пароль:")
+        print(password)
+
+        end = input("Желаете сохранить'y' пароль или закрыть программу'q'? y \ q ")
+        if end == "q":
+            break
+
+        if end == "y":
+            use = input("Где собираетесь использовать? ")
+            all_info = password + " - " + use
+
+            filename = "C://Users/Reizzzor/Desktop/secret.txt"
+            with open(filename, "a") as f_o:
+                f_o.write(all_info + "\n")
+                print(password + " - пароль сохранен в файле: " + filename)
+            password = ""
+
+        else:
+            password = ""
+
+
+generation_passwords(10)
